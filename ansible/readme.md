@@ -10,7 +10,7 @@ This project contains an **Ansible Playbook** to install and configure the follo
 - **Other dependencies** such as package updates and permission setups
 ## Ansible Structure
 
-.
+```.
 ├── ahmed.pem
 ├── inventory
 ├── playbook.yml
@@ -43,7 +43,7 @@ This project contains an **Ansible Playbook** to install and configure the follo
         │   └── main.yaml
         └── vars
             └── main.yml
-
+```
 
 
 
