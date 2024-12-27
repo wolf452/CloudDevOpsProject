@@ -27,6 +27,7 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 
 ### VPC Module (`modules/vpc`)
 ├── [**VPC**](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/vpc)
+<br />
 **Purpose**: Creates a Virtual Private Cloud (VPC) in AWS.
 
 **Resources**:
@@ -44,6 +45,7 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 
 ### Subnet Module (`modules/subnet`)
 ├── [**Subnet**](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/subnet)
+<br />
 **Purpose**: Creates public subnets within the VPC.
 
 **Resources**:
