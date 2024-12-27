@@ -42,12 +42,12 @@ your_ec2_instance_ip ansible_ssh_user=ubuntu ansible_private-key=./ivolve.pem
 ### 3. Update Variable Settings
 In the ansible/roles/sonarqube/vars/main.yml file, modify the following variables to match your setup:
 
-postgres_root_user: The root PostgreSQL username
-postgres_root_pass: The root PostgreSQL password
-psql_sonar_username: PostgreSQL username for the SonarQube database
-psql_sonar_password: PostgreSQL password for the SonarQube database
-sonarqube_version: The version of SonarQube you want to install
-sonar_web_port: The port SonarQube will run on (default is 9000)
+- postgres_root_user: The root PostgreSQL username
+- postgres_root_pass: The root PostgreSQL password
+- psql_sonar_username: PostgreSQL username for the SonarQube database
+- psql_sonar_password: PostgreSQL password for the SonarQube database
+- sonarqube_version: The version of SonarQube you want to install
+- sonar_web_port: The port SonarQube will run on (default is 9000)
 
 ### 4. Run the Playbook
 Run the Ansible playbook to install and configure the systems:
@@ -58,11 +58,11 @@ ansible-playbook -i inventory playbook
 The playbook will perform the following tasks:
 
 Set up Docker on the target server:
-Install OpenJDK 17 for Java-based applications
-Install and configure Jenkins to run automatically
-Install SonarQube and configure it to use PostgreSQL as the database
-Install Kubernetes CLI tools like kubectl and kind
-Set up dependencies and required files for each service
+- Install OpenJDK 17 for Java-based applications
+- Install and configure Jenkins to run automatically
+- Install SonarQube and configure it to use PostgreSQL as the database
+- Install Kubernetes CLI tools like kubectl and kind
+- Set up dependencies and required files for each service
 
 ### 5. Verify the Installation
 After running the playbook, verify that the services are running correctly:
