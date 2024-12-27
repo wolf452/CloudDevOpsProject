@@ -70,14 +70,45 @@ Clone this repository to your local machine or the server where **Ansible** is i
 git clone <repository_link>
 cd <repository_folder>
 ```
+![clone](https://github.com/user-attachments/assets/4464b4f5-d8c7-44da-bba7-4f5f4602a78b)
+
 ### 2. Configure the Inventory File
 In the inventory file, define the target EC2 nodes under the [slave] group like this:
 ```bash
 [slave]
 your_ec2_instance_ip ansible_ssh_user=ubuntu ansible_private-key=./ivolve.pem
 ```
+![inventory](https://github.com/user-attachments/assets/1ceea175-5339-4b6e-b2e4-b322c270cc94)
 
-### 3. Update Variable Settings
+### 3. Configure the playbook.yaml File
+To configure your playbook.yml file, you'll need to structure it in such a way that it pulls in the relevant roles and defines the host group for deployment. Based on the list of roles you provided and the host group slave, here is an example configuration for your playbook.yml file:
+
+![playbooke](https://github.com/user-attachments/assets/d3b217e7-5721-4ce9-a8e3-b991b3811dd5)
+
+### 4. Configure roles 
+- vim roles/common: 
+  - Package Updates: Updates system packages to ensure the system is running with the latest available versions.
+  - Install Essential Packages: Installs tools like curl and wget to ensure the necessary utilities are available
+
+- vim roles/dependance:
+   - Sets up configuration directories for Jenkins.
+   - Changes permissions for the Docker socket file.
+   - Copies the kube configuration for Jenkins.
+
+- vim roles/docker:
+   -Install Docker:
+       - This role involves installing Docker from the official Docker repository.
+       - Docker is a platform that enables building, shipping, and running applications in containers
+       - Installing Docker ensures the server is prepared to manage containerized applications.
+- vim roles/git:
+   - Install Git:
+       - Git is a distributed version control system crucial for developers to clone repositories, track code changes, and collaborate effectively.
+       - This role ensures Git is installed on the target server for seamless version control.
+- vim roles/jenkins:
+   -  Installs Jenkins and configures it to run automatically on boot
+- vim roles/Kubernetes:
+   -   Installs Kubernetes CLI tools such as kubectl and kind.
+### 4. Update Variable Settings
 In the ansible/roles/sonarqube/vars/main.yml file, modify the following variables to match your setup:
 
 - postgres_root_user: The root PostgreSQL username
@@ -95,7 +126,7 @@ ansible-playbook -i inventory playbook
 ```
 The playbook will perform the following tasks:
 
-Set up Docker on the target server:
+:
 - Install OpenJDK 17 for Java-based applications
 - Install and configure Jenkins to run automatically
 - Install SonarQube and configure it to use PostgreSQL as the database
