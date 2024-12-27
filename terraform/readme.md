@@ -1,20 +1,20 @@
-# Terraform AWS Infrastructure
+# Terraform AWS Infrastructure🚀
 
 Terraform is an Infrastructure as Code (IaC) tool that allows you to define and provision infrastructure in a declarative way, ensuring consistency, automation, and easier collaboration.
 
 This project is a Terraform-based setup for deploying a highly customizable AWS infrastructure. Below is a detailed explanation of each component and module used in this configuration.
 
-## Overview
+## Overview📚
 
 This project provisions a Virtual Private Cloud (VPC), subnets, an internet gateway, security groups, EC2 instances, and sets up logging and monitoring using AWS CloudWatch. It also includes an SNS topic for notifications.
 
-## Prerequisites
+## Prerequisites⭐
 
 - Install Terraform.
 - Install AWS CLI and configure it with your credentials (`aws configure`).
 - Ensure you have sufficient IAM permissions to create resources in AWS.
 
-## Directory Structure
+## Directory Structure🏗️
 
 - `main.tf`: The root configuration file that integrates all modules.
 - `variables.tf`: Defines the input variables for the root module.
@@ -25,7 +25,7 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 ## Modules Description
 
 ### VPC Module (`modules/vpc`)
-
+├── [**VPC **] https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/vpc
 **Purpose**: Creates a Virtual Private Cloud (VPC) in AWS.
 
 **Resources**:
