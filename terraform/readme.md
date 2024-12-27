@@ -183,7 +183,53 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 # Main.tf
 
 ## File Contents
-### 1. AWS Provider  
+### 1. AWS Provider 
+This block defines the AWS provider and sets the region where the resources will be deployed using the region variable.
+
+![1-ma](https://github.com/user-attachments/assets/41f93a5d-ff00-40d4-81d5-7bee7392834e)
+
+### 2. vpc Module
+This module creates a VPC using the vpc_name and vpc_cidr variables to define the name and CIDR block of the VPC.
+
+![2-ma](https://github.com/user-attachments/assets/fea76ed0-abd0-4b69-bd6d-c09529d26aa5)
+
+
+### 3. subnet Module
+This module creates subnets within the VPC that was created earlier. It takes the vpc_id from the vpc module output and passes the subnet data from the subnets variable.
+
+![3-ma](https://github.com/user-attachments/assets/b67521d4-96b8-4c0b-a229-a2713e09ac24)
+
+
+### 4. internet_gateway Module
+This module creates an Internet Gateway and attaches it to the public subnets created earlier.
+
+![igw](https://github.com/user-attachments/assets/ffb3283d-1610-48a2-a2d5-e324bc40f6e0)
+
+
+### 5. security_group Module
+This module creates a Security Group using the rules defined in the security_group_rules variable and associates it with the VPC.
+
+![sg-m](https://github.com/user-attachments/assets/e21433ec-33bf-4b78-8b0c-be8dc304f3bb)
+
+
+### 6. ec2_instance Module
+This module creates an EC2 instance with the AMI specified in ami_id, the instance_type, and places it in the public subnet. CloudWatch and SSM configurations are also set up.
+
+![ec2-main](https://github.com/user-attachments/assets/1117e69b-5310-48e3-8bc3-d9952eb37626)
+
+
+### 7. cloudwatch Module
+This module creates a CloudWatch Log Group and sets up a Log Stream to monitor logs for the EC2 instance.
+
+![cloudwatch-main](https://github.com/user-attachments/assets/4ce14441-4989-44fc-ade5-e6c76362922a)
+
+
+### 8. sns Module
+This module creates an SNS Topic and sets up a subscription using the protocol defined in the sns_subscription_protocol variable (such as email, Lambda, or SQS).
+
+![cloudwatch-main](https://github.com/user-attachments/assets/dcfdfd2f-406c-404c-8271-1e2c54e2fcce)
+ 
+
 ## Usage
 
 1. Clone this repository.
