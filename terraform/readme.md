@@ -181,7 +181,7 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 
 
 # Main.tf
-
+├── [**main.tf**](https://github.com/wolf452/CloudDevOpsProject/blob/main/terraform/main.tf):
 ## File Contents
 ### 1. AWS Provider 
 This block defines the AWS provider and sets the region where the resources will be deployed using the region variable.
@@ -229,6 +229,69 @@ This module creates an SNS Topic and sets up a subscription using the protocol d
 
 ![cloudwatch-main](https://github.com/user-attachments/assets/dcfdfd2f-406c-404c-8271-1e2c54e2fcce)
  
+# output.tf
+├── [**output.tf**](https://github.com/wolf452/CloudDevOpsProject/blob/main/terraform/output.tf): 
+
+## file content
+These outputs are displayed after running the terraform apply command. They contain the EC2 instance ID, public IP, and public DNS. 
+
+![root-out](https://github.com/user-attachments/assets/e02e1ca2-b2d9-472d-80e0-d91048bebd53)
+
+
+# backend.tf
+
+├── [**backend.tf**](https://github.com/wolf452/CloudDevOpsProject/blob/main/terraform/backend.tf): 
+
+## file content
+### 1. Backend Configuration
+This block configures the backend to store the Terraform state in an S3 bucket, ensuring that the state is stored centrally and securely. Encryption is enabled for the data.
+
+![s3-](https://github.com/user-attachments/assets/fa726688-b933-424e-a8e8-2c8c2a4eaf3d)
+
+
+### 2. DynamoDB Configuration for State Locking
+This resource creates a DynamoDB table for state locking to prevent concurrent changes to the state.
+
+![dynamo](https://github.com/user-attachments/assets/6e052516-0e83-4a16-9969-aeecf58b98b0)
+
+
+# Terraform Variables
+## File Contents
+
+### 1. AWS Region
+This variable sets the AWS region where resources will be created. In this case, the region is us-east-1.
+### 2. S3 Bucket and DynamoDB Table for Terraform State
+These variables define the S3 bucket name and DynamoDB table for storing the Terraform state and enabling state locking.
+### 3. VPC Configuration
+These variables define the name and CIDR block for the Virtual Private Cloud (VPC) to be created.
+### 4. Subnets
+This variable defines two subnets within the VPC. Each subnet is assigned a CIDR block and availability zone. Public IP addresses will be mapped to instances on launch.
+![image](https://github.com/user-attachments/assets/d12c4e80-6b13-437d-83ee-2e556914d18f)
+
+
+### 5. Security Group Rules
+This variable defines two security group rules:
+SSH (port 22) access from anywhere (0.0.0.0/0).
+HTTP (port 80) access from anywhere (0.0.0.0/0).
+
+![defintion2](https://github.com/user-attachments/assets/fa37b369-03f5-4820-aa23-bf1a816d790e)
+
+
+### 6. EC2 Instance Configuration
+These variables define the AMI ID, instance type, key pair, and instance name for the EC2 instance to be created. The instance will be launched using the specified AMI (ami-0e2c8caa4b6378d8c).
+
+![defition-3](https://github.com/user-attachments/assets/49642e52-e442-4e97-948e-fb25f280dbf8)
+
+
+### 7. CloudWatch Configuration
+These variables define the CloudWatch Log Group, Log Stream, and the SSM key used for the CloudWatch agent configuration.
+### 8. SNS Topic and Subscription
+These variables define the SNS Topic name and the subscription settings. The subscription protocol is set to email, and the email endpoint is ahmed.software200@gmail.com.
+
+![defition4](https://github.com/user-attachments/assets/397c4af7-89da-4280-9522-c6e24bd69420)
+
+
+
 
 ## Usage
 
