@@ -26,7 +26,7 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 ## Modules Description
 
 ### VPC Module (`modules/vpc`)
-├── [** VPC **](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/vpc)
+├── [**VPC**](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/vpc)
 **Purpose**: Creates a Virtual Private Cloud (VPC) in AWS.
 
 **Resources**:
@@ -43,7 +43,7 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 
 
 ### Subnet Module (`modules/subnet`)
-
+├── [**Subnet**](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/subnet)
 **Purpose**: Creates public subnets within the VPC.
 
 **Resources**:
@@ -58,8 +58,8 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 ![SUBNET](https://github.com/user-attachments/assets/f5db557f-9307-49e5-9d7d-8a0535427f2f)
 ![SUBNET](https://github.com/user-attachments/assets/d9240745-ccf5-43b4-b5be-55f52a1412bb)
 
-### Internet Gateway Module (`modules/internet-gateway`)
-
+### Internet Gateway Module (`modules/internet-gateway&aws_route_table`)
+├── [**internet-gateway**](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/internet-gateway)
 **Purpose**: Sets up an internet gateway and associates it with the VPC's route table for internet access.
 
 **Resources**:
@@ -74,9 +74,12 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 **Outputs**:
 - `internet_gateway_id`: ID of the created internet gateway.
 - `route_table_id`: ID of the associated route table.
+![first-igw](https://github.com/user-attachments/assets/13657bbf-a38e-4f65-9d82-d16398bd3f8f)
+![second-igw](https://github.com/user-attachments/assets/45b4d91d-1384-4353-9aca-985c747da4d2)
+![var-igw](https://github.com/user-attachments/assets/1612a3e9-f470-4d52-8c66-5c4c155bddd4)
 
 ### Security Group Module (`modules/security-group`)
-
+├── [**Security Group**](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/security-group)
 **Purpose**: Defines security groups and rules for controlling inbound traffic.
 
 **Resources**:
@@ -89,9 +92,12 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 
 **Outputs**:
 - `security_group_id`: ID of the created security group.
+![sg](https://github.com/user-attachments/assets/82d2d205-9ae6-4ae7-9671-4d0b5056e06a)
+![sg-var](https://github.com/user-attachments/assets/ac9078b1-730f-4585-88bf-c711edbc85f9)
+
 
 ### EC2 Module (`modules/ec2`)
-
+├── [**EC2**](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/ec2)
 **Purpose**: Provisions an EC2 instance with CloudWatch monitoring enabled.
 
 **Resources**:
@@ -111,9 +117,14 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 - `instance_id`: ID of the created EC2 instance.
 - `public_ip`: Public IP address of the instance.
 - `public_dns`: Public DNS name of the instance.
+![ec2-first](https://github.com/user-attachments/assets/8f26f5ae-3e73-41ad-a537-27f0b60e716f)
+![ec2-sec](https://github.com/user-attachments/assets/7e9c25cb-d1ff-4b84-a17e-b32e9e08065d)
+![ec2-thi](https://github.com/user-attachments/assets/d38162a9-9667-43f2-89ae-b26224e2654e)
+![ec2-var-1](https://github.com/user-attachments/assets/555ec2b7-9355-442c-ac3d-78ca2dcd089e)
+![ec2-var-2](https://github.com/user-attachments/assets/76221cf2-bf43-4dfd-94b6-13a65e45781d)
 
 ### CloudWatch Module (`modules/cloudwatch`)
-
+├── [**CloudWatch**](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/cloudwatch)
 **Purpose**: Sets up CloudWatch log group and log stream for monitoring.
 
 **Resources**:
@@ -126,8 +137,11 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 - `log_stream_name`: Name of the log stream.
 - `cloudwatch_config_ssm_key`: SSM key for the CloudWatch agent configuration.
 
+![cloud-watch-1](https://github.com/user-attachments/assets/f67c96a5-f783-4611-925d-1ed3ed02fcd0)
+![cloud-watch-2](https://github.com/user-attachments/assets/23c58de0-e00f-4af2-bf23-7b2b31625d5f)
+![cloud-watch-var](https://github.com/user-attachments/assets/e5abd241-1b55-4eca-9252-51d19f0ebfc3)
 ### SNS Module (`modules/sns`)
-
+├── [**SNS**](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/sns)
 **Purpose**: Sets up an SNS topic for notifications.
 
 **Resources**:
@@ -141,7 +155,13 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 
 **Outputs**:
 - `sns_topic_arn`: ARN of the created SNS topic.
+![sns-a](https://github.com/user-attachments/assets/d97ab675-12d0-4bba-9960-b3d2aca51560)
+![sns-b](https://github.com/user-attachments/assets/ca35c78e-6818-4465-b907-28e4b790bf76)
+![sns-c](https://github.com/user-attachments/assets/701c272a-6a6f-4fa4-aec6-62f189276afc)
 
+
+
+  
 ## Usage
 
 1. Clone this repository.
