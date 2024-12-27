@@ -180,8 +180,10 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 ![sns-c](https://github.com/user-attachments/assets/701c272a-6a6f-4fa4-aec6-62f189276afc)
 
 
+# Main.tf
 
-  
+## File Contents
+### 1. AWS Provider  
 ## Usage
 
 1. Clone this repository.
