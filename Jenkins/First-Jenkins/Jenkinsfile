@@ -1,0 +1,65 @@
+@Library('my-shared-library') _
+
+pipeline {
+    agent any
+
+    environment {
+        AWS_ACCESS_KEY_ID = credentials('aws-access-key')
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')
+        AWS_REGION = 'us-east-1'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkoutStage(
+                    gitBranch: 'main',
+                    gitUrl: 'https://github.com/wolf452/FinalProjectCode.git'
+                )
+            }
+        }
+
+        stage('Terraform Init') {
+            steps {
+                terraformInitStage(
+                    terraformDir: 'terraform'
+                )
+            }
+        }
+
+        stage('Terraform Plan') {
+            steps {
+                terraformPlanStage(
+                    terraformDir: 'terraform'
+                )
+            }
+        }
+
+        stage('Terraform Apply') {
+            steps {
+                terraformApplyStage(
+                    terraformDir: 'terraform'
+                )
+            }
+        }
+
+        stage('Delay Before Ansible Playbook') {
+            steps {
+                delayBeforeAnsibleStage(
+                    delayMinutes: 1
+                )
+            }
+        }
+
+        stage('Run Ansible') {
+            steps {
+                ansibleStage(
+                    ansibleDir: 'ansible',
+                    inventoryFile: 'inventory',
+                    ansibleCredentialsId: 'ansible-ssh',
+                    ansiblePlaybook: 'playbook.yml'
+                )
+            }
+        }
+    }
+}
