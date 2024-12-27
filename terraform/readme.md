@@ -302,18 +302,21 @@ These variables define the SNS Topic name and the subscription settings. The sub
    ```bash
    terraform init
    ```
+![terraform-init](https://github.com/user-attachments/assets/4d0d835a-491a-4da9-8dba-c0b872329e25)
 
 4. Validate the configuration:
 
    ```bash
    terraform validate
    ```
+![terraform-val](https://github.com/user-attachments/assets/a11842d8-0b32-4640-b549-95fd9238c6b9)
 
 5. Apply the changes:
 
    ```bash
    terraform apply
    ```
+![terraform-apply](https://github.com/user-attachments/assets/97e22160-d36a-4288-815f-9fd0596dce98)
 
 6. Destroy resources when no longer needed:
 
