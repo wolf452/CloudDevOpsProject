@@ -1,0 +1,19 @@
+---
+    - name: Create 'jenkins' directory under /home/ubuntu
+      file:
+        path: /home/ubuntu/jenkins
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+        mode: '0755'
+
+    - name: Change permissions for /var/run/docker.sock
+      file:
+        path: /var/run/docker.sock
+        mode: '0777'
+
+    - name: Copy kube config to /home/ubuntu/
+      copy:
+        src: ~/.kube/
+        dest: /home/ubuntu/jenkins
+        remote_src: yes
