@@ -1,6 +1,6 @@
 # Project Overview
 
-This project utilizes Jenkins pipelines to automate infrastructure provisioning, application deployment, and integration using Terraform, Ansible, Docker, Jenkins, Git, OpenShift CLI (oc), SonarQube, and PostgreSQL. It consists of two main pipelines orchestrated through Jenkins:
+This project utilizes Jenkins pipelines to automate infrastructure provisioning, application deployment, and integration using Terraform, Ansible, Docker, Jenkins, Git, Kubernetes K8S, SonarQube, and PostgreSQL. It consists of two main pipelines orchestrated through Jenkins:
 
 ## Project Diagram
 
