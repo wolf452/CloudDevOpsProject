@@ -86,28 +86,72 @@ To configure your playbook.yml file, you'll need to structure it in such a way t
 ![playbooke](https://github.com/user-attachments/assets/d3b217e7-5721-4ce9-a8e3-b991b3811dd5)
 
 ### 4. Configure roles 
-- vim roles/common: 
-  - Package Updates: Updates system packages to ensure the system is running with the latest available versions.
-  - Install Essential Packages: Installs tools like curl and wget to ensure the necessary utilities are available
+ - vim roles/common: 
+    - Package Updates: Updates system packages to ensure the system is running with the latest available versions.
+    - Install Essential Packages: Installs tools like curl and wget to ensure the necessary utilities are available
+
+![common](https://github.com/user-attachments/assets/663ec500-c2bb-46cf-b255-b88e0052f903)
 
 - vim roles/dependance:
    - Sets up configuration directories for Jenkins.
    - Changes permissions for the Docker socket file.
    - Copies the kube configuration for Jenkins.
 
+![dependence](https://github.com/user-attachments/assets/56f378af-eae8-4bda-bd92-927a9a8acc32)
+
+
 - vim roles/docker:
-   -Install Docker:
+   - Install Docker:
        - This role involves installing Docker from the official Docker repository.
        - Docker is a platform that enables building, shipping, and running applications in containers
        - Installing Docker ensures the server is prepared to manage containerized applications.
+![docker](https://github.com/user-attachments/assets/ef51cb0b-0091-46af-a74a-41f26ba76080)
+
+
 - vim roles/git:
    - Install Git:
        - Git is a distributed version control system crucial for developers to clone repositories, track code changes, and collaborate effectively.
        - This role ensures Git is installed on the target server for seamless version control.
+
+![git](https://github.com/user-attachments/assets/2cbfe7ec-4142-4c6e-a55b-92943652be27)
+
+
 - vim roles/jenkins:
-   -  Installs Jenkins and configures it to run automatically on boot
+   - Install Jenkins:
+      - Jenkins, an open-source automation server, facilitates continuous integration and continuous delivery (CI/CD).
+      - This role installs Jenkins on the server, enabling automated building, testing, and deployment of applications.
+
+  -  Configure Jenkins to Run Automatically on Boot: 
+         - To ensure uninterrupted service, Jenkins is configured to start automatically whenever the server restarts by enabling its service at boot.
+
+![jenkins](https://github.com/user-attachments/assets/3520dcd7-3f9d-45c6-a3a8-ff126b64cd26)
+
+
 - vim roles/Kubernetes:
-   -   Installs Kubernetes CLI tools such as kubectl and kind.
+   -   Install Kubernetes CLI Tools:
+       - kubectl: A command-line tool to interact with Kubernetes clusters, essential for deploying, managing, and troubleshooting applications. 
+       - kind (Kubernetes in Docker): A tool for running Kubernetes clusters locally using Docker, ideal for testing and development without a full cloud setup.
+         - this role ensures the necessary Kubernetes CLI tools are installed, equipping the server to interact effectively with Kubernetes clusters.
+
+![k8s](https://github.com/user-attachments/assets/86159a54-ea0b-492d-9007-ca83afc63da4)
+
+
+
+
+- vim roles/ sonarqube
+        - Installs PostgreSQL and configures it to work with SonarQube.
+        - Installs SonarQube and configures it to use PostgreSQL as the database.
+        - Sets up SonarQube as a systemd service to start automatically.
+![son1](https://github.com/user-attachments/assets/e6d8cc8b-75d1-4bc9-b1cc-809b7ad1b8c9)
+
+![son2](https://github.com/user-attachments/assets/50a039da-dd09-47d3-b533-a1ed2430f68a)
+
+![so3](https://github.com/user-attachments/assets/c3cae790-3eda-48bd-9359-829ed93dc0cd)
+
+- vim roles/java
+    - Installs OpenJDK 17 to run Java-based applications.
+![java](https://github.com/user-attachments/assets/becd0ce9-e589-47d1-89f6-e26bc84abbf1)
+    
 ### 4. Update Variable Settings
 In the ansible/roles/sonarqube/vars/main.yml file, modify the following variables to match your setup:
 
@@ -118,12 +162,16 @@ In the ansible/roles/sonarqube/vars/main.yml file, modify the following variable
 - sonarqube_version: The version of SonarQube you want to install
 - sonar_web_port: The port SonarQube will run on (default is 9000)
 
-### 4. Run the Playbook
+![image](https://github.com/user-attachments/assets/725b419c-6283-49bc-988c-51365418b5d1)
+
+### 5. Run the Playbook
 Run the Ansible playbook to install and configure the systems:
 
 ```bash
 ansible-playbook -i inventory playbook
 ```
+![run2](https://github.com/user-attachments/assets/58c79225-387d-4dcb-aa3d-170d60c67205)
+
 The playbook will perform the following tasks:
 
 :
@@ -153,47 +201,3 @@ To verify kind installation, use the command:
 ```bash
 kubectl version 
 ```
-##  Roles in the Playbook
-### git
-Installs Git on the target server.
-### common
-Updates system packages and performs system-level upgrades.
-### docker
-Installs Docker and its dependencies.
-Configures the Docker service to start on boot.
-### java
-Installs OpenJDK 17 to run Java-based applications.
-### jenkins
-Installs Jenkins and configures it to run automatically on boot.
-### sonarqube
-Installs PostgreSQL and configures it to work with SonarQube.
-Installs SonarQube and configures it to use PostgreSQL as the database.
-Sets up SonarQube as a systemd service to start automatically.
-
-### Kubernetes
-Installs Kubernetes CLI tools such as kubectl and kind.
-
-### dependance
-Sets up configuration directories for Jenkins.
-Changes permissions for the Docker socket file.
-Copies the kube configuration for Jenkins.
-
-## Technical Details for Each Role
-
-### common Role
-Package Updates: Updates system packages to ensure the system is running with the latest available versions.
-Install Essential Packages: Installs tools like curl and wget to ensure the necessary utilities are available.
-
-### docker Role
-Install Docker: Installs Docker from the official repository for Ubuntu.
-Docker Group Setup: Adds the user to the Docker group to allow running Docker commands without root privileges.
-
-### java Role
-Install OpenJDK 17: Installs Java 17, which is required by tools like Jenkins and SonarQube.
-
-### sonarqube Role
-Install PostgreSQL: Installs and configures PostgreSQL for SonarQube.
-Set Up SonarQube: Downloads and installs SonarQube, then configures it to use PostgreSQL as its database.
-
-### jenkins Role
-Install Jenkins: Installs Jenkins and configures it to start automatically on boot.
