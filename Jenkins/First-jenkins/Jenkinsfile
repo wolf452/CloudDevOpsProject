@@ -1,0 +1,69 @@
+@Library('my-shared-library') 
+
+pipeline {
+    agent { label 'jenkins-slave' }
+
+    environment {
+        DOCKER_IMAGE = 'docker.io/ahmedmaher07/project'
+        DEPLOYMENT_YAML = 'deployment.yaml'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkoutCode() 
+            }
+        }
+
+        stage('Unit Test') {
+            steps {
+                runUnitTests()  
+            }
+        }
+
+        stage('Build') {
+            steps {
+                buildProject()  
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                sonarAnalysis()  
+            }
+        }
+
+        stage('Login to Docker Hub') {
+            steps {
+                loginToDockerHub()  
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                buildDockerImage()  
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                pushDockerImage()  
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                deployToK8s()  
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline executed successfully."
+        }
+        failure {
+            echo "Pipeline failed. Please check the logs for details."
+        }
+    }
+}
