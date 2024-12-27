@@ -8,6 +8,44 @@ This project contains an **Ansible Playbook** to install and configure the follo
 - **Java OpenJDK 17**
 - **PostgreSQL** (for SonarQube)
 - **Other dependencies** such as package updates and permission setups
+## Ansible Structure
+
+.
+├── ahmed.pem
+├── inventory
+├── playbook.yml
+└── roles
+    ├── common
+    │   └── tasks
+    │       └── main.yml
+    ├── dependance
+    │   └── tasks
+    │       └── main.yaml
+    ├── docker
+    │   └── tasks
+    │       └── main.yml
+    ├── git
+    │   └── tasks
+    │       └── main.yml
+    ├── java
+    │   └── tasks
+    │       └── main.yml
+    ├── jenkins
+    │   └── tasks
+    │       └── main.yml
+    ├── Kubernetes
+    │   └── tasks
+    │       └── main.yaml
+    └── sonarqube
+        ├── handlers
+        │   └── main.yml
+        ├── tasks
+        │   └── main.yaml
+        └── vars
+            └── main.yml
+
+
+
 
 ## Requirements
 
