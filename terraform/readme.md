@@ -21,6 +21,7 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 - `output.tf`: Specifies the output values from the root module.
 - `terraform.tfvars`: Contains the actual values for variables.
 - `modules/`: Contains reusable Terraform modules.
+![structure](https://github.com/user-attachments/assets/02e40b4f-39f6-4d1b-91e5-c95ff7c7d72c)
 
 ## Modules Description
 
@@ -37,6 +38,9 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 
 **Outputs**:
 - `vpc_id`: The ID of the created VPC.
+![VPC](https://github.com/user-attachments/assets/e73a7fa0-1d96-47c8-bd53-ca8e42778047)
+![VPC-VAR](https://github.com/user-attachments/assets/0428ebfb-5697-4976-bfbb-f2c15c02ae9a)
+
 
 ### Subnet Module (`modules/subnet`)
 
@@ -51,6 +55,8 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 
 **Outputs**:
 - `public_subnet_ids`: IDs of the created public subnets.
+![SUBNET](https://github.com/user-attachments/assets/f5db557f-9307-49e5-9d7d-8a0535427f2f)
+![SUBNET](https://github.com/user-attachments/assets/d9240745-ccf5-43b4-b5be-55f52a1412bb)
 
 ### Internet Gateway Module (`modules/internet-gateway`)
 
