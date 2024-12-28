@@ -1,4 +1,4 @@
-@Library('my-shared-library') _
+@Library('Jenkins/second-Jenkinsfile/my-shared-library/vars') _
 
 pipeline {
     agent { label 'jenkins-slave' }
