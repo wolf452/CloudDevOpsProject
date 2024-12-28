@@ -1,7 +1,4 @@
-def call(Map config = [:]) {
-    stage('Checkout') {
-        script {
-            git branch: config.gitBranch ?: 'main', url: config.gitUrl ?: 'https://github.com/wolf452/CloudDevOpsProject.git'
-        }
-    }
+def call(String gitUrl, String branch) {
+    echo "Cloning the source code from GitHub"
+    git url: gitUrl, branch: branch
 }
