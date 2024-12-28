@@ -10,7 +10,7 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            step {
+            steps {
                 checkoutStage(
                      $class: 'GitSCM',
                     gitUrl: 'https://github.com/wolf452/CloudDevOpsProject.git',
@@ -20,43 +20,43 @@ pipeline {
         }
 
         stage('Unit Test') {
-            step {
+            steps {
                 unitTestStage()
             }
         }
 
         stage('Build') {
-            step {
+            steps {
                 buildStage()
             }
         }
 
         stage('SonarQube Analysis') {
-            step {
+            steps {
                 sonarQubeStage()
             }
         }
 
         stage('Login to Docker Hub') {
-            step {
+            steps {
                 dockerLoginStage()
             }
         }
 
         stage('Build Docker Image') {
-            step {
+            steps {
                 dockerBuildStage(env.DOCKER_IMAGE)
             }
         }
 
         stage('Push Docker Image') {
-            step {
+            steps {
                 dockerPushStage(env.DOCKER_IMAGE)
             }
         }
 
         stage('Deploy to Kubernetes') {
-            step {
+            steps {
                 deployStage(env.DEPLOYMENT_YAML)
             }
         }
