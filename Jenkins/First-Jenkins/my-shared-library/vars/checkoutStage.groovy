@@ -1,4 +1,4 @@
 def call(String gitUrl, String branch) {
     echo "Cloning the source code from GitHub"
-    git url: gitUrl, branch: branch
+    checkout([$class: 'GitSCM', branches: [[name: branch]], userRemoteConfigs: [[url: gitUrl]]])
 }
