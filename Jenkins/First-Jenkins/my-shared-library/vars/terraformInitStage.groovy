@@ -1,6 +1,6 @@
 def call(Map config = [:]) {
     stage('Terraform Init') {
-        steps {
+        step {
             dir(config.terraformDir ?: 'terraform') {
                 withCredentials([aws(credentialsId: config.awsCredentialsId ?: 'aws-cred')]) {
                     script {
