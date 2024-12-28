@@ -1,6 +1,6 @@
 def call() {
     stage('Unit Test') {
-        steps {
+        step {
             echo "Running unit tests"
             sh "chmod +x gradlew"
             sh "./gradlew test"
