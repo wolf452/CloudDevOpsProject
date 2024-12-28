@@ -14,7 +14,7 @@ pipeline {
             steps {
                 checkoutStage(
                     gitBranch: 'main',
-                    gitUrl: 'https://github.com/wolf452/FinalProjectCode.git'
+                    gitUrl: 'https://github.com/wolf452/CloudDevOpsProject.git'
                 )
             }
         }
