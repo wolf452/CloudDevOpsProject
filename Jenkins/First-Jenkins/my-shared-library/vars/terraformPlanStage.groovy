@@ -1,6 +1,6 @@
 def call(Map config = [:]) {
     stage('Terraform Plan') {
-        steps {
+        step {
             dir(config.terraformDir ?: 'terraform') {
                 sh 'terraform plan'
             }
