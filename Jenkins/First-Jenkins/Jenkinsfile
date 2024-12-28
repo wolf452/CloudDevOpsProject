@@ -1,4 +1,4 @@
-@Library('my-shared-library') _
+@Library('shared-library') _
 
 pipeline {
     agent any
@@ -8,45 +8,45 @@ pipeline {
         BACKEND_DIR = 'terraform'
         ANSIBLE_DIR = 'ansible'
         INVENTORY_FILE = 'inventory'
-        AWS_ACCESS_KEY_ID = credentials('aws-access-key')  
-        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')  
+        AWS_ACCESS_KEY_ID = credentials('aws-access-key')
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')
         AWS_REGION = 'us-east-1'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/wolf452/CloudDevOpsProject.git']]])
+                git branch: 'main', url: 'https://github.com/wolf452/FinalProjectCode.git'
             }
         }
 
         stage('Terraform Init') {
             steps {
-               terraformInitStage(terraformDir: TERRAFORM_DIR, awsCredentialsId: 'aws-cred')  // Correct function call
+                terraformInit()
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                terraformPlanStage(terraformDir: TERRAFORM_DIR)
+                terraformPlan()
             }
         }
 
         stage('Terraform Apply') {
             steps {
-                terraformApplyStage(terraformDir: TERRAFORM_DIR)
+                terraformApply()
             }
         }
 
         stage('Delay Before Ansible Playbook') {
             steps {
-                delayBeforeAnsibleStage(delayMinutes: 1)
+                delayBeforeAnsible()
             }
         }
 
         stage('Run Ansible') {
             steps {
-                ansibleStage(ansibleDir: ANSIBLE_DIR, ansibleCredentialsId: 'ansible-ssh', inventoryFile: INVENTORY_FILE)
+                runAnsible()
             }
         }
     }
