@@ -34,10 +34,6 @@ resource "aws_instance" "ec2" {
   monitoring             = true
   tags                   = var.tags
   key_name               = var.key_name
-  network_interface {
-    device_index                 = 0
-    associate_public_ip_address  = true
-  }
 
   user_data = <<-EOT
     #!/bin/bash
