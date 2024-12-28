@@ -28,16 +28,34 @@ security_group_rules = [
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+  },
+  {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  },
+  {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  },
+  {
+    from_port   = 9000
+    to_port     = 9000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 ]
+
 ami_id               = "ami-0e2c8caa4b6378d8c"
 key_name             = "DevOps-test"
-
 instance_type        = "t3.xlarge"
 ec2_name             = "ivolve-project"
 cloudwatch_log_group = "log-group"
 cloudwatch_log_stream = "log-stream"
 cloudwatch_config_ssm_key = "cloudwatch-config"
-sns_topic_name            = "ivolve-sns-topic"
+sns_topic_name       = "ivolve-sns-topic"
 sns_subscription_protocol = "email"
 sns_subscription_endpoint = "ahmed.software200@gmail.com"
