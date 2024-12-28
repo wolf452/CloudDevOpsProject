@@ -5,7 +5,7 @@ resource "aws_security_group" "sg" {
   }
 }
 
-resource "aws_security_group_rule" "rules" {
+resource "aws_security_group_rule" "ingress_rules" {
   for_each = { for rule in var.security_group_rules : rule.from_port => rule }
 
   type        = "ingress"
@@ -13,6 +13,15 @@ resource "aws_security_group_rule" "rules" {
   to_port     = each.value.to_port
   protocol    = each.value.protocol
   cidr_blocks = each.value.cidr_blocks
+  security_group_id = aws_security_group.sg.id
+}
+
+resource "aws_security_group_rule" "egress_rule" {
+  type        = "egress"
+  from_port   = 0
+  to_port     = 0
+  protocol    = "-1"
+  cidr_blocks = ["0.0.0.0/0"]
   security_group_id = aws_security_group.sg.id
 }
 
