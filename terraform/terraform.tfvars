@@ -41,12 +41,7 @@ security_group_rules = [
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   },
-  {
-    from_port   = 9000
-    to_port     = 9000
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  
 ]
 
 ami_id               = "ami-0e2c8caa4b6378d8c"
