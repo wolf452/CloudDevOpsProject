@@ -12,6 +12,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkoutStage(
+                     $class: 'GitSCM',
                     gitUrl: 'https://github.com/wolf452/CloudDevOpsProject.git',
                     gitBranch: 'main'
                 )
