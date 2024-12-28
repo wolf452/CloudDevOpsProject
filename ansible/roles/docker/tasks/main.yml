@@ -1,8 +1,4 @@
----
-- name: Install Docker on Ubuntu
-  hosts: all
-  become: true
-  tasks:
+
     - name: Install required packages for Docker
       apt:
         name: "{{ item }}"
