@@ -16,7 +16,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/wolf452/FinalProjectCode.git'
+                git branch: 'main', url: 'https://github.com/wolf452/CloudDevOpsProject.git'
             }
         }
 
