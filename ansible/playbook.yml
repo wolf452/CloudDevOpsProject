@@ -8,4 +8,4 @@
      - jenkins
      - sonarqube
      - Kubernetes
-     - dependance
+     #- dependance
