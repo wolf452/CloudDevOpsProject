@@ -1,47 +1,40 @@
----
-- name: Remove all Docker repository files if they exist
-  file:
-    path: /etc/apt/sources.list.d/download_docker_com_linux_ubuntu.list
-    state: absent
-  ignore_errors: yes
-  
-- name: Gather distribution information
-  command: lsb_release -cs
-  register: distro_release
+    - name: Install required packages for Docker
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
 
-- name: Install Docker prerequisites
-  apt:
-    name: 
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - software-properties-common
-    state: present
+    - name: Add Docker GPG key
+      ansible.builtin.apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
 
-- name: Add Docker GPG key
-  apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    state: present
+    - name: Add Docker repository
+      ansible.builtin.apt_repository:
+        repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable'
+        state: present
 
-- name: Add Docker repository
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ distro_release.stdout }} stable"
-    state: present
+    - name: Update apt cache
+      apt:
+        update_cache: yes
 
-- name: Update apt and install Docker
-  apt:
-    name: docker-ce
-    state: present
-    update_cache: yes
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
 
-- name: Start and enable Docker service
-  service:
-    name: docker
-    state: started
-    enabled: yes
-    
-- name: Set permissions for /var/run/docker.sock
-  file:
-    path: /var/run/docker.sock
-    mode: '0666'
-   
+    - name: Start and enable Docker service
+      ansible.builtin.systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add user to Docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
