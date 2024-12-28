@@ -67,6 +67,7 @@ variable "key_name" {
 
 variable "sns_topic_name" {
   description = "The name of the SNS topic"
+  default     = "my-default-sns-topic"
 }
 
 variable "sns_subscription_protocol" {
