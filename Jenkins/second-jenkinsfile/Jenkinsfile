@@ -8,12 +8,14 @@ pipeline {
         DEPLOYMENT_YAML = 'deployment.yaml'
     }
 
+   
     stages {
         stage('Checkout') {
             steps {
-                checkoutStage('https://github.com/wolf452/FinalProjectCode.git', 'main')
+                checkoutStage(gitBranch: 'main', gitUrl: 'https://github.com/wolf452/CloudDevOpsProject.git')
             }
         }
+
 
         stage('Unit Test') {
             steps {
