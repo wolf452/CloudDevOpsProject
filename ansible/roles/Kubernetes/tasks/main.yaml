@@ -1,3 +1,9 @@
+- name: Start and enable Docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
 - name: Install kubectl
   become: true
   get_url:
