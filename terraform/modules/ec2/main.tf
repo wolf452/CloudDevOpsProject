@@ -26,14 +26,18 @@ resource "aws_iam_instance_profile" "ec2_instance_profile" {
 }
 
 resource "aws_instance" "ec2" {
-  ami               = var.ami_id
-  instance_type     = var.instance_type
-  subnet_id         = var.subnet_id
-  security_groups   = [var.security_group_id]
-  iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
-  monitoring        = true
-  tags              = var.tags
-  key_name          = var.key_name
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  subnet_id              = var.subnet_id
+  security_groups        = [var.security_group_id]
+  iam_instance_profile   = aws_iam_instance_profile.ec2_instance_profile.name
+  monitoring             = true
+  tags                   = var.tags
+  key_name               = var.key_name
+  network_interface {
+    device_index                 = 0
+    associate_public_ip_address  = true
+  }
 
   user_data = <<-EOT
     #!/bin/bash
@@ -59,6 +63,7 @@ output "instance_id" {
 output "public_ip" {
   value = aws_instance.ec2.public_ip
 }
+
 output "public_dns" {
   value = aws_instance.ec2.public_dns
 }
