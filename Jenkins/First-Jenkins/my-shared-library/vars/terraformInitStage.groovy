@@ -1,6 +1,6 @@
 def call(Map config = [:]) {
     stage('Terraform Init') {
-        steps {
+        step {
             dir(config.terraformDir ?: 'terraform') {
                 script {
                     env.TF_VAR_AWS_ACCESS_KEY = env.AWS_ACCESS_KEY_ID
