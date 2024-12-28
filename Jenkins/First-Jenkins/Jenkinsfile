@@ -22,7 +22,7 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                terraformInitStage(terraformDir: TERRAFORM_DIR, awsCredentialsId: 'aws-cred')
+               terraformInitStage(terraformDir: TERRAFORM_DIR, awsCredentialsId: 'aws-cred')  // Correct function call
             }
         }
 
