@@ -12,7 +12,7 @@ def call(Map config = [:]) {
 
     stages {
         stage('Checkout') {
-            steps {
+            step {
                 git branch: config.gitBranch ?: 'main', url: config.gitUrl ?: 'https://github.com/wolf452/CloudDevOpsProject.git'
             }
         }
