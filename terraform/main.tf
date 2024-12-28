@@ -51,3 +51,10 @@ module "cloudwatch" {
   cloudwatch_config_ssm_key = var.cloudwatch_config_ssm_key
 }
 
+resource "local_file" "ansible_inventory" {
+  content = <<-EOT
+    [slave]
+    ${module.ec2_instance.public_ip} ansible_ssh_user=ubuntu 
+  EOT
+  filename = "../ansible/inventory"
+}
