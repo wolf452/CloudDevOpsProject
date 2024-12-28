@@ -9,10 +9,11 @@ terraform {
 resource "aws_dynamodb_table" "terraform_state_lock" {
   name           = "ivolvegp-table"
   billing_mode   = "PAY_PER_REQUEST"
-  hash_key       = "LockID"
+  hash_key       = "id"
 
   attribute {
-    name = "LockID"
+    name = "id"  
     type = "S"
   }
 }
+
