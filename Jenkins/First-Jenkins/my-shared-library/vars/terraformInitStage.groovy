@@ -1,6 +1,7 @@
+// terraformInitStage.groovy
 def call(Map config = [:]) {
     stage('Terraform Init') {
-        step {
+        steps {
             dir(config.terraformDir ?: 'terraform') {
                 withCredentials([aws(credentialsId: config.awsCredentialsId ?: 'aws-cred')]) {
                     script {
