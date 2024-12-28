@@ -1,6 +1,6 @@
 def call(Map config = [:]) {
     stage('Terraform Apply') {
-        steps {
+        step {
             dir(config.terraformDir ?: 'terraform') {
                 sh 'terraform apply -auto-approve'
             }
