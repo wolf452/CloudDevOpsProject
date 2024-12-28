@@ -1,41 +1,28 @@
-- name: Create 'jenkins' directory under /home/ubuntu
-  file:
-    path: /home/ubuntu/jenkins
-    state: directory
-    owner: ubuntu
-    group: ubuntu
-    mode: '0755'
+    - name: Create 'jenkins' directory under /home/ubuntu
+      file:
+        path: /home/ubuntu/jenkins
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+        mode: '0755'
 
-- name: Change permissions for /var/run/docker.sock
-  file:
-    path: /var/run/docker.sock
-    mode: '0777'
+    - name: Change permissions for /var/run/docker.sock
+      file:
+        path: /var/run/docker.sock
+        mode: '0777'
+      become: true  # This is required to modify system files like docker.sock
 
-- name: Create Kind cluster
-  shell: |
-    kind create cluster 
-  become: true
+    - name: Create Kind cluster
+      shell: kind create cluster
+      become: true
+      environment:
+        KUBEVIRT_VERSION: "v0.19.0"  # Example environment variable, if needed for your setup
 
-- name: Copy kube config to /home/ubuntu/
-  copy:
-    src: ~/.kube/
-    dest: /home/ubuntu/jenkins
-    remote_src: yes
-
-- name: Start PostgreSQL
-  service:
-    name: postgresql
-    state: started
-    enabled: yes
-
-- name: Restart PostgreSQL
-  service:
-    name: postgresql
-    state: restarted
-
-- name: Start Sonar
-  systemd:
-    name: sonar
-    state: started
-    enabled: yes
-
+    - name: Copy kube config to /home/ubuntu/jenkins
+      copy:
+        src: "{{ ansible_env.HOME }}/.kube/config"
+        dest: /home/ubuntu/jenkins/kube_config"
+        remote_src: yes
+        owner: ubuntu
+        group: ubuntu
+        mode: '0755'
