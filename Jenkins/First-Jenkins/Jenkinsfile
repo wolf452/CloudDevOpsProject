@@ -4,61 +4,49 @@ pipeline {
     agent any
 
     environment {
-        AWS_ACCESS_KEY_ID = credentials('aws-access-key')
-        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')
+        TERRAFORM_DIR = 'terraform'
+        BACKEND_DIR = 'terraform'
+        ANSIBLE_DIR = 'ansible'
+        INVENTORY_FILE = 'inventory'
+        AWS_ACCESS_KEY_ID = credentials('aws-access-key')  
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')  
         AWS_REGION = 'us-east-1'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                checkoutStage(
-                    gitBranch: 'main',
-                    gitUrl: 'https://github.com/wolf452/CloudDevOpsProject.git'
-                )
+                checkoutStage(gitBranch: 'main', gitUrl: 'https://github.com/wolf452/FinalProjectCode.git')
             }
         }
 
         stage('Terraform Init') {
             steps {
-                terraformInitStage(
-                    terraformDir: 'terraform'
-                )
+                terraformInitStage(terraformDir: TERRAFORM_DIR, awsCredentialsId: 'aws-cred')
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                terraformPlanStage(
-                    terraformDir: 'terraform'
-                )
+                terraformPlanStage(terraformDir: TERRAFORM_DIR)
             }
         }
 
         stage('Terraform Apply') {
             steps {
-                terraformApplyStage(
-                    terraformDir: 'terraform'
-                )
+                terraformApplyStage(terraformDir: TERRAFORM_DIR)
             }
         }
 
         stage('Delay Before Ansible Playbook') {
             steps {
-                delayBeforeAnsibleStage(
-                    delayMinutes: 1
-                )
+                delayBeforeAnsibleStage(delayMinutes: 1)
             }
         }
 
         stage('Run Ansible') {
             steps {
-                ansibleStage(
-                    ansibleDir: 'ansible',
-                    inventoryFile: 'inventory',
-                    ansibleCredentialsId: 'ansible-ssh',
-                    ansiblePlaybook: 'playbook.yml'
-                )
+                ansibleStage(ansibleDir: ANSIBLE_DIR, ansibleCredentialsId: 'ansible-ssh', inventoryFile: INVENTORY_FILE)
             }
         }
     }
