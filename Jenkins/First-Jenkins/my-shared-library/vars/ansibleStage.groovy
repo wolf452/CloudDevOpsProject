@@ -1,6 +1,6 @@
 def call(Map config = [:]) {
     stage('Run Ansible') {
-        step {
+        steps {
             dir(config.ansibleDir ?: 'ansible') {
                 ansiblePlaybook(
                     credentialsId: config.ansibleCredentialsId ?: 'ansible-ssh',
