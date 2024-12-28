@@ -3,7 +3,7 @@
   become: true
   roles:
      - git
-     #- docker
+     - docker
      - java
      - jenkins
      - sonarqube
