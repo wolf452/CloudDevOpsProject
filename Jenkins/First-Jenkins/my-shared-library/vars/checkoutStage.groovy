@@ -1,5 +1,5 @@
-// checkoutStage.groovy
-def call(String gitUrl, String branch) {
-    echo "Cloning the source code from GitHub"
-    git url: gitUrl, branch: branch
+stage('Checkout') {
+  steps {
+    checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/wolf452/CloudDevOpsProject.git']]])
+  }
 }
