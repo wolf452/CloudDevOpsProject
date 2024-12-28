@@ -4,11 +4,7 @@
     path: /etc/apt/sources.list.d/download_docker_com_linux_ubuntu.list
     state: absent
   ignore_errors: yes
-
-- name: Ensure the apt package list is updated
-  apt:
-    update_cache: yes
-
+  
 - name: Gather distribution information
   command: lsb_release -cs
   register: distro_release
