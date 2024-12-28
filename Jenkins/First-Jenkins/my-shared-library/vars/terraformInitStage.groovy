@@ -1,6 +1,6 @@
 def terraformInit(Map config = [:]) {
     stage('Terraform Init') {
-        steps {
+        step {
             dir(config.terraformDir ?: 'terraform') {
                 withCredentials([aws(credentialsId: 'aws-cred')]) {
                     script {
