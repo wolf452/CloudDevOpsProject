@@ -21,7 +21,7 @@ This section details how to set up a Jenkins pipeline for continuous integration
 - **SonarQube Test**
 - **Build Image**
 - **Push Image to Registry**
-- **Deploy on AKS (Azure Kubernetes Service)**
+- **Deploy on k8s**
 
 The implementation utilizes:
 - Shared Jenkins Library for reusable pipeline logic.
@@ -33,7 +33,7 @@ The implementation utilizes:
 - Jenkins server with master and slave nodes configured.
 - Docker, Kubernetes CLI, and SonarQube installed on the Jenkins slave.
 - A Git repository to store the Jenkinsfile and shared library.
-- AKS cluster set up and accessible from Jenkins.
+- k8s cluster set up and accessible from Jenkins.
 - SonarQube server configured with a project and token.
 - Credentials for Docker Registry, Git, and SonarQube added to Jenkins.
 
@@ -50,7 +50,7 @@ The implementation utilizes:
    - SonarQube Test
    - Build Image
    - Push Image to Registry
-   - Deploy on AKS
+   - Deploy on k8s
 3. Reference the shared library functions for each stage.
 4. Validate the syntax of the Jenkinsfile using Jenkins' pipeline syntax validator.
 5. Commit the `Jenkinsfile` to your repository.
@@ -75,7 +75,7 @@ The implementation utilizes:
    - `buildAndTest.groovy`: Executes unit tests and builds the JAR.
    - `sonarQubeAnalysis.groovy`: Performs SonarQube analysis.
    - `dockerTasks.groovy`: Builds and pushes Docker images.
-   - `deployToKubernetes.groovy`: Deploys the application to AKS.
+   - `deployToKubernetes.groovy`: Deploys the application to k8s.
 3. Commit the shared library to the repository.
 4. Add the shared library to Jenkins by navigating to **Manage Jenkins > Configure System > Global Pipeline Libraries** and defining the library name and repository URL.
 5. **Validation Step:**  screenshot of the shared library configuration in Jenkins.
@@ -115,6 +115,6 @@ The implementation utilizes:
    - JAR is built.
    - SonarQube analysis runs without issues.
    - Docker image is built and pushed.
-   - Application is deployed to AKS.
+   - Application is deployed to k8s.
 5. **Validation Step:**  screenshots of:
    - Last build from Jenkins pipeline.
