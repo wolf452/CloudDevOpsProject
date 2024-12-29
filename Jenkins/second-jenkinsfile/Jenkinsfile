@@ -1,4 +1,4 @@
-@Library('shared-library') _
+@Library('my-shared-library') _  // Load the shared library
 
 pipeline {
     agent { label 'jenkins-slave' }
@@ -11,49 +11,49 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkoutCode(gitBranch: 'main', gitUrl: 'https://github.com/wolf452/CloudDevOpsProject.git')
+                checkoutStage()  // Calls the checkoutStage.groovy function
             }
         }
 
         stage('Unit Test') {
             steps {
-                unitTestStage()
+                unitTestStage()  // Calls the unitTestStage.groovy function
             }
         }
 
         stage('Build') {
             steps {
-                buildStage()
+                buildStage()  // Calls the buildStage.groovy function
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
-                sonarQubeStage()
+                sonarQubeStage()  // Calls the sonarQubeStage.groovy function
             }
         }
 
         stage('Login to Docker Hub') {
             steps {
-                dockerLoginStage()
+                dockerLoginStage()  // Calls the dockerLoginStage.groovy function
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                dockerBuildStage(env.DOCKER_IMAGE)
+                dockerBuildStage()  // Calls the dockerBuildStage.groovy function
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                dockerPushStage(env.DOCKER_IMAGE)
+                dockerPushStage()  // Calls the dockerPushStage.groovy function
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
-                deployStage(env.DEPLOYMENT_YAML)
+                deployStage('/home/ubuntu/jenkins/.kube/config', DEPLOYMENT_YAML)  // Calls the deployStage.groovy function
             }
         }
     }
@@ -63,7 +63,7 @@ pipeline {
             echo "Pipeline executed successfully."
         }
         failure {
-            echo "Pipeline failed. Please check the logs."
+            echo "Pipeline failed. Please check the logs for details."
         }
     }
 }
