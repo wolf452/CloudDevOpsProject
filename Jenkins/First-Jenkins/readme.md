@@ -3,6 +3,8 @@
 
 This project automates the creation and configuration of an infrastructure using Terraform and Ansible, integrated with Jenkins pipelines. Below is a detailed explanation of each component and its purpose.
 
+![ans](https://github.com/user-attachments/assets/1bc5c5b3-bc8e-418a-bd4d-b9e0b0574686)
+
 ## Project Overview
 
 1. **Infrastructure as Code (IaC):** Uses Terraform to define and provision AWS infrastructure.
