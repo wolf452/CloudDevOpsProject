@@ -1,7 +1,7 @@
 @Library('my-shared-library') _  // Load the shared library
 
 pipeline {
-    agent { label 'ansible-test' }
+    agent { label 'jenkins-slave' }
 
     environment {
         DOCKER_IMAGE = 'docker.io/ahmedmaher07/project'
