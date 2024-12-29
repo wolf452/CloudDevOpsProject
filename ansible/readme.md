@@ -189,8 +189,21 @@ Run the Ansible playbook to install and configure the systems:
 ```bash
 ansible-playbook -i inventory playbook
 ```
+![1-install](https://github.com/user-attachments/assets/15e55770-0272-46ce-b329-1269aac23f6f)
 
-![run2](https://github.com/user-attachments/assets/58c79225-387d-4dcb-aa3d-170d60c67205)
+![2-install](https://github.com/user-attachments/assets/c3570cfc-d28f-4d27-85af-ed53d6fb79f2)
+
+![3-install](https://github.com/user-attachments/assets/78425735-c053-4077-a7f8-f42b21aa2a85)
+
+![4-install](https://github.com/user-attachments/assets/103db178-08c4-48e5-b2d2-fbc72f2a76be)
+
+![5-install](https://github.com/user-attachments/assets/b8c7c852-5210-4b24-bd47-6b0b36d21211)
+
+![6-install](https://github.com/user-attachments/assets/ca23699b-149c-41ad-a31d-4f4e21ea47ca)
+
+![7-install](https://github.com/user-attachments/assets/98db3fd0-bc2c-4d72-80b7-b0f8b9b40011)
+
+
 
 The playbook will perform the following tasks:
 
