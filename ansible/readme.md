@@ -151,7 +151,26 @@ To configure your playbook.yml file, you'll need to structure it in such a way t
 - vim roles/java
     - Installs OpenJDK 17 to run Java-based applications.
 ![java](https://github.com/user-attachments/assets/becd0ce9-e589-47d1-89f6-e26bc84abbf1)
-    
+
+- vim roles/Dependencies
+  - Create the 'jenkins' Directory
+      - Purpose: Creates a directory named jenkins in /home/ubuntu, to be used as a workspace or configuration directory for a Jenkins slave.
+    -  Details:
+     - Ownership is set to the ubuntu user and group.
+     - Permissions are set to 0755:
+     - Owner: Full access (read, write, execute).
+     - Group/Others: Read and execute access only.  
+
+  - Change Permissions for /var/run/docker.sock
+  - Create a Kind Cluster:
+      - Purpose: Creates a Kubernetes cluster using Kind (Kubernetes IN Docker) to provide a lightweight, local Kubernetes environment for deploying applications.
+
+ - Copy Kubernetes Config File
+    - Purpose:
+       - Copies the Kubernetes configuration file (config) from its default location (~/.kube/config) to the jenkins directory to enable the Jenkins slave to interact with the Kubernetes cluster.
+
+![dependance](https://github.com/user-attachments/assets/32ffcdf0-93da-4280-9430-b77c5920f08f)
+
 ### 4. Update Variable Settings
 In the ansible/roles/sonarqube/vars/main.yml file, modify the following variables to match your setup:
 
@@ -170,6 +189,7 @@ Run the Ansible playbook to install and configure the systems:
 ```bash
 ansible-playbook -i inventory playbook
 ```
+
 ![run2](https://github.com/user-attachments/assets/58c79225-387d-4dcb-aa3d-170d60c67205)
 
 The playbook will perform the following tasks:
