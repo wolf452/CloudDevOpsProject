@@ -60,6 +60,7 @@ ansible-playbook playbook.yml -i inventory --private-key /var/lib/jenkins/worksp
 ![ansible-3](https://github.com/user-attachments/assets/e0053c03-3dd3-4cf6-9e6d-f5ae29648428)
 ![ansible-4](https://github.com/user-attachments/assets/f3dce60a-7564-4b7f-b4fe-87c5651d6c37)
 ![1-out](https://github.com/user-attachments/assets/f47b7a1a-ff7e-4e02-aadc-ed7feb283c43)
+![finish-ansible](https://github.com/user-attachments/assets/02737fd4-0228-42ae-8760-276236d08662)
 
 ### 7. **Check the Results**
 After Ansible completes execution, Jenkins displays the results in the Jenkins UI, logging any changes or issues encountered.
