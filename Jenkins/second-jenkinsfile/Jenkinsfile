@@ -15,10 +15,6 @@ pipeline {
                 echo "Cloning the source code from GitHub"
                 // Cloning the repository into the FinalProjectCode-main directory
                 git url: 'https://github.com/wolf452/CloudDevOpsProject.git', branch: 'main'
-                script {
-                    // Move into the directory after the checkout
-                    
-                }
             }
         }
 
