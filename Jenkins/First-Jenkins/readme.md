@@ -25,6 +25,8 @@ This project automates the creation and configuration of an infrastructure using
 
   - AWS Access Key and Secret Key stored securely in Jenkins.
 
+![cred](https://github.com/user-attachments/assets/51c04a9b-a61d-4873-a605-1f393be165ba)
+
 - **Environment:**
 
   - Jenkins server set up with the necessary plugins for Terraform and Ansible.
