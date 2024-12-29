@@ -44,6 +44,7 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 ![VPC](https://github.com/user-attachments/assets/e73a7fa0-1d96-47c8-bd53-ca8e42778047)
 ![VPC-VAR](https://github.com/user-attachments/assets/0428ebfb-5697-4976-bfbb-f2c15c02ae9a)
 
+<img width="815" alt="vpcc" src="https://github.com/user-attachments/assets/4786b395-7384-4b80-b1b0-593c46787443" />
 
 ### Subnet Module (`modules/subnet`)
 
@@ -63,6 +64,8 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 
 ![SUBNET](https://github.com/user-attachments/assets/f5db557f-9307-49e5-9d7d-8a0535427f2f)
 ![SUBNET](https://github.com/user-attachments/assets/d9240745-ccf5-43b4-b5be-55f52a1412bb)
+
+<img width="840" alt="subnet;;" src="https://github.com/user-attachments/assets/3cfe7f4e-4511-4653-bbc2-9902fff896f6" />
 
 ### Internet Gateway Module (`modules/internet-gateway&aws_route_table`)
 
@@ -87,6 +90,11 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 ![second-igw](https://github.com/user-attachments/assets/45b4d91d-1384-4353-9aca-985c747da4d2)
 ![var-igw](https://github.com/user-attachments/assets/1612a3e9-f470-4d52-8c66-5c4c155bddd4)
 
+
+<img width="817" alt="rt igw" src="https://github.com/user-attachments/assets/669bc3c9-32c6-4629-a3ee-632035778ba7" />
+
+<img width="843" alt="rtt" src="https://github.com/user-attachments/assets/a9c036b2-ac43-40b4-ac37-a35bf04f2733" />
+
 ### Security Group Module (`modules/security-group`)
 
 ├── [**Security Group**](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/security-group):
@@ -106,7 +114,6 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 
 ![sg](https://github.com/user-attachments/assets/82d2d205-9ae6-4ae7-9671-4d0b5056e06a)
 ![sg-var](https://github.com/user-attachments/assets/ac9078b1-730f-4585-88bf-c711edbc85f9)
-
 
 ### EC2 Module (`modules/ec2`)
 ├── [**EC2**](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/ec2):
@@ -137,6 +144,11 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 ![ec2-var-1](https://github.com/user-attachments/assets/555ec2b7-9355-442c-ac3d-78ca2dcd089e)
 ![ec2-var-2](https://github.com/user-attachments/assets/76221cf2-bf43-4dfd-94b6-13a65e45781d)
 
+
+<img width="817" alt="ec2-xx" src="https://github.com/user-attachments/assets/a617ea0d-6e7b-4779-b62a-38abd38d6969" />
+
+<img width="733" alt="ec222" src="https://github.com/user-attachments/assets/bb6d079f-c6e3-4106-a8fd-efb99ffd6a05" />
+
 ### CloudWatch Module (`modules/cloudwatch`)
 
 ├── [**CloudWatch**](https://github.com/wolf452/CloudDevOpsProject/tree/main/terraform/modules/cloudwatch):
@@ -156,6 +168,7 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 ![cloud-watch-1](https://github.com/user-attachments/assets/f67c96a5-f783-4611-925d-1ed3ed02fcd0)
 ![cloud-watch-2](https://github.com/user-attachments/assets/23c58de0-e00f-4af2-bf23-7b2b31625d5f)
 ![cloud-watch-var](https://github.com/user-attachments/assets/e5abd241-1b55-4eca-9252-51d19f0ebfc3)
+
 
 ### SNS Module (`modules/sns`)
 
@@ -179,6 +192,8 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 ![sns-b](https://github.com/user-attachments/assets/ca35c78e-6818-4465-b907-28e4b790bf76)
 ![sns-c](https://github.com/user-attachments/assets/701c272a-6a6f-4fa4-aec6-62f189276afc)
 
+
+<img width="812" alt="sns" src="https://github.com/user-attachments/assets/ee837ccf-86e2-4918-bfe2-0915f217838e" />
 
 # Main.tf
 ├── [**main.tf**](https://github.com/wolf452/CloudDevOpsProject/blob/main/terraform/main.tf):
