@@ -1,127 +1,52 @@
 
-# CloudDevOpsProject
+# Iaac-Ansible Project
 
-This project automates the provisioning and configuration of infrastructure using **Terraform**, **Ansible**, and **Jenkins**. It offers a flexible, scalable pipeline for deploying development environments (e.g., EC2 instances on AWS) and configuring them using open-source tools.
+This project automates the creation and configuration of an infrastructure using Terraform and Ansible, integrated with Jenkins pipelines. Below is a detailed explanation of each component and its purpose.
 
-## High-Level Overview
+## Project Overview
 
-1. **Terraform**: Used to provision infrastructure resources like AWS EC2 instances.
-2. **Ansible**: Configures the provisioned infrastructure by automating software installation and configurations.
-3. **Jenkins**: Orchestrates the entire process, automating code checkout from GitHub, Terraform commands, and Ansible configurations.
-
-## Project Workflow
-
-### 1. **GitHub Checkout**
-Jenkins pulls the latest code from the GitHub repository:
-```groovy
-git branch: 'main', url: 'https://github.com/username/CloudDevOpsProject.git'
-```
-
-### 2. **Terraform Initialization**
-Jenkins initializes the Terraform working directory:
-```groovy
-terraformInit()
-```
-
-### 3. **Terraform Plan**
-Jenkins generates a Terraform execution plan:
-```groovy
-terraformPlan()
-```
-This plan previews the changes (like creating EC2 instances) that Terraform will apply.
-
-### 4. **Terraform Apply**
-Terraform provisions EC2 instances on AWS:
-```groovy
-terraformApply()
-```
-
-### 5. **Inventory File**
-Terraform generates an inventory file containing the EC2 instance IP addresses and SSH details:
-```
-[aws_instances]
-18.204.194.253 ansible_user=ubuntu
-```
-
-### 6. **Run Ansible**
-Jenkins triggers Ansible to configure the newly provisioned EC2 instances:
-```bash
-ansible-playbook playbook.yml -i inventory --private-key /path/to/ssh_key -u ubuntu -e "ansible_ssh_extra_args='-o StrictHostKeyChecking=no'"
-```
-
-### 7. **Results and Logs**
-Jenkins logs the results of the Ansible playbook execution, providing real-time feedback in the Jenkins UI.
+1. **Infrastructure as Code (IaC):** Uses Terraform to define and provision AWS infrastructure.
+2. **Configuration Management:** Uses Ansible to configure the provisioned EC2 instances.
+3. **CI/CD Pipeline:** Jenkins orchestrates the Terraform and Ansible processes in a streamlined pipeline.
 
 ---
 
-## Jenkins Shared Library for Terraform and Ansible Pipelines
+## Prerequisites
 
-This repository includes a shared Jenkins library designed to automate infrastructure provisioning and configuration using **Terraform** and **Ansible**. The library simplifies pipeline creation by providing pre-built, reusable stages.
+- **Tools and Platforms:**
 
-### Key Features
-- **Modularized Stages**: Separate stages for each pipeline step (e.g., Terraform init, plan, apply, Ansible playbook run).
-- **Terraform Integration**: Seamlessly runs Terraform commands to initialize, plan, and apply infrastructure.
-- **Ansible Integration**: Easily configures infrastructure using Ansible playbooks.
-- **Reusability**: Stages are parameterized and can be reused across multiple projects.
+  - Jenkins
+  - Terraform
+  - Ansible
+  - AWS Account
+  - Git
 
----
+- **Credentials:**
 
-## Folder Structure
+  - AWS Access Key and Secret Key stored securely in Jenkins.
 
-```
-(root)
-├── vars/
-│   ├── checkoutStage.groovy         # Git checkout logic
-│   ├── terraformInitStage.groovy    # Initializes Terraform
-│   ├── terraformPlanStage.groovy    # Generates Terraform plan
-│   ├── terraformApplyStage.groovy   # Applies Terraform changes
-│   ├── delayBeforeAnsibleStage.groovy # Delay before running Ansible
-│   ├── ansibleStage.groovy          # Runs Ansible playbook
-└── resources/                       # Optional static resources
-```
+- **Environment:**
+
+  - Jenkins server set up with the necessary plugins for Terraform and Ansible.
+  - A Git repository containing the Terraform and Ansible configurations.
 
 ---
 
-## How to Use
+## Pipeline Explanation
 
-### Step 1: Add the Shared Library to Jenkins
-1. Go to **Manage Jenkins** > **Configure System**.
-2. Scroll to **Global Pipeline Libraries**.
-3. Add the library:
-   - **Name**: `my-shared-library`
-   - **Default Version**: `main` (or desired branch/tag)
-   - **Source Code Management**: Git
-   - **Repository URL**: `<Your Git Repository URL>`
-
-### Step 2: Reference the Library in Your Jenkinsfile
-In your project repository, reference the shared library in your `Jenkinsfile`:
-```groovy
-@Library('my-shared-library') _
-
-pipeline {
-    agent any
-
-    stages {
-        stage('Example Stage') {
-            steps {
-                echo 'Using the shared library!'
-            }
-        }
-    }
-}
-```
-
----
-
-## Example Pipeline
+### Jenkinsfile
 
 ```groovy
-@Library('my-shared-library') _
+@Library('shared-library') _
 
 pipeline {
     agent any
 
     environment {
+        TERRAFORM_DIR = 'terraform'
+        BACKEND_DIR = 'terraform'
+        ANSIBLE_DIR = 'ansible'
+        INVENTORY_FILE = 'inventory'
         AWS_ACCESS_KEY_ID = credentials('aws-access-key')
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')
         AWS_REGION = 'us-east-1'
@@ -130,85 +55,151 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkoutStage(gitBranch: 'main', gitUrl: 'https://github.com/username/CloudDevOpsProject.git')
+                git branch: 'main', url: 'https://github.com/wolf452/CloudDevOpsProject.git'
             }
         }
 
         stage('Terraform Init') {
             steps {
-                terraformInitStage(terraformDir: 'terraform')
+                terraformInit()
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                terraformPlanStage(terraformDir: 'terraform')
+                terraformPlan()
             }
         }
 
         stage('Terraform Apply') {
             steps {
-                terraformApplyStage(terraformDir: 'terraform')
+                terraformApply()
             }
         }
 
-        stage('Delay') {
+        stage('Delay Before Ansible Playbook') {
             steps {
-                delayBeforeAnsibleStage(delayMinutes: 2)
+                delayBeforeAnsible()
             }
         }
 
         stage('Run Ansible') {
             steps {
-                ansibleStage(
-                    ansibleDir: 'ansible',
-                    inventoryFile: 'inventory',
-                    ansibleCredentialsId: 'ansible-ssh',
-                    ansiblePlaybook: 'playbook.yml'
-                )
+                runAnsible()
             }
         }
     }
 }
 ```
 
----
+### Pipeline Stages
 
-## Configuration
-
-Make sure the following Jenkins credentials are configured:
-- **AWS Credentials**:
-  - `aws-access-key`
-  - `aws-secret-key`
-- **Ansible SSH Credentials**:
-  - `ansible-ssh`
+1. **Checkout:** Clones the Git repository containing the Terraform and Ansible code.
+2. **Terraform Init:** Initializes Terraform with the backend and provider configurations.
+3. **Terraform Plan:** Creates a plan for the desired infrastructure changes.
+4. **Terraform Apply:** Applies the Terraform plan to provision AWS resources, including EC2 instances.
+5. **Delay Before Ansible Playbook:** Ensures provisioned resources are ready before proceeding.
+6. **Run Ansible:** Executes the Ansible playbook to configure the provisioned EC2 instances.
 
 ---
 
-## Tools Used
+## Terraform
 
-### Jenkins
-- Automates the entire pipeline, from code checkout to deployment.
+### Directory Structure
 
-### Terraform
-- Manages infrastructure as code, provisioning resources like EC2 instances on AWS.
+```
+terraform/
+|-- main.tf
+|-- variables.tf
+|-- outputs.tf
+|-- backend.tf
+```
 
-### Ansible
-- Automates configuration management, ensuring infrastructure is properly set up and configured.
+### Key Features
+
+- **AWS VPC**
+- **Subnets**
+- **Security Groups**
+- **EC2 Instances**
+- **Ansible Inventory Generation:** Terraform creates an `inventory` file with the IPs and users for Ansible.
+
+### Commands
+
+```sh
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
 
 ---
 
-## Contributing
+## Ansible
 
-1. Fork the repository.
-2. Create a new branch (`feature/my-feature`).
-3. Commit changes.
-4. Open a pull request.
+### Directory Structure
+
+```
+ansible/
+|-- playbook.yml
+|-- roles/
+    |-- git/
+    |-- docker/
+    |-- java/
+    |-- jenkins/
+    |-- sonarqube/
+    |-- kubernetes/
+```
+
+### Playbook Breakdown
+
+1. **Install Git:** Installs Git on the EC2 instance.
+2. **Install Docker:** Sets up Docker and adds the user to the Docker group.
+3. **Install Java:** Installs OpenJDK 17.
+4. **Install Jenkins:** Configures Jenkins and starts its service.
+5. **Install SonarQube:** Configures SonarQube along with PostgreSQL as its backend.
+6. **Install Kubernetes Tools:** Installs `kubectl` and `kind`.
+
+### Running the Playbook
+
+The playbook is executed by Jenkins with the following command:
+
+```sh
+ansible-playbook playbook.yml -i inventory --private-key /path/to/key -u ansible-user
+```
 
 ---
 
-## License
+## Sample Output
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+### Terraform Output
+
+```
+Terraform has been successfully initialized!
+Terraform Plan:
+  - Create EC2 instances
+  - Configure Security Groups
+  - Generate Ansible inventory
+
+Terraform Apply:
+  - Resources created successfully
+```
+
+### Ansible Output
+
+```
+TASK [Gathering Facts] *********************************************************
+ok: [18.204.194.253]
+...
+TASK [sonarqube : Start Sonar] *************************************************
+changed: [18.204.194.253]
+
+PLAY RECAP *********************************************************************
+18.204.194.253             : ok=48   changed=31   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
 
 ---
+
+## Conclusion
+
+This project demonstrates the integration of Terraform and Ansible through Jenkins pipelines to provision and configure infrastructure. It ensures a streamlined and automated approach to infrastructure management.
+
+Feel free to reach out for additional support or enhancements!
