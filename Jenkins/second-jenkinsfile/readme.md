@@ -91,8 +91,10 @@ The implementation utilizes:
 3. Verify the slave is active in Jenkins.
 4. **Validation Step:** screenshot of the Jenkins slave node configuration and its status as "Online."
 
-   
-![image](https://github.com/user-attachments/assets/00f37b3b-767c-4c21-b6c9-1ff931636903)
+![edit-jenkins-slave](https://github.com/user-attachments/assets/48d7cf60-4e14-46f8-8620-ff6fa220a975)
+
+![sssss](https://github.com/user-attachments/assets/d96f4bd1-1af0-417b-8638-d76cbb92ea59)
+
 
 ### Step 4: Configure SonarQube in Jenkins
 1. Install the **SonarQube Scanner** plugin in Jenkins.
@@ -100,8 +102,13 @@ The implementation utilizes:
 3. Configure the SonarQube scanner executable in **Manage Jenkins > Global Tool Configuration.**
 4. Ensure the `sonarQubeAnalysis.groovy` script references the correct SonarQube project key.
 5. **Validation Step:** screenshot of the SonarQube project configuration and analysis result in Jenkins.
+![home-sonar](https://github.com/user-attachments/assets/087009b3-9c82-4522-9427-6991a06bee7f)
 
-   
+![create-project](https://github.com/user-attachments/assets/0ed3aedf-b3a7-45cc-8cdd-57afd2e30ecc)
+
+![create-token](https://github.com/user-attachments/assets/eaca1ff0-a3bc-493b-a14c-8cf7ce0c9bd6)
+![home-token](https://github.com/user-attachments/assets/e8b6768f-a4fa-496f-bd5d-14d9ba47bd99)
+
 ![image](https://github.com/user-attachments/assets/1ba38b7d-3b84-48af-8024-fd253b746a28)
 
 
@@ -118,3 +125,10 @@ The implementation utilizes:
    - Application is deployed to k8s.
 5. **Validation Step:**  screenshots of:
    - Last build from Jenkins pipeline.
+![1-out](https://github.com/user-attachments/assets/7f4eb326-c5d1-49d7-8eda-64a34c9d7dea)
+![test-out](https://github.com/user-attachments/assets/a66d976f-08f8-43ac-8e00-611a35a3827b)
+![build-out](https://github.com/user-attachments/assets/0a863ec4-95bd-4651-8035-11540fe72661)
+![sonar-out](https://github.com/user-attachments/assets/b2090c4b-2b9d-4e39-b628-955e7bf831ae)
+![login-dockerhup](https://github.com/user-attachments/assets/2abcc8f0-b90c-420d-b625-826bf1ef985a)
+![finish](https://github.com/user-attachments/assets/b3e86e0b-87e3-49f0-915e-0fccfa714658)
+![build-image](https://github.com/user-attachments/assets/64cc2fc4-d275-4d87-aad4-7413e97045ab)
