@@ -64,7 +64,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                deployStage('/home/ubuntu/jenkins/.kube/config', DEPLOYMENT_YAML)  // Calls the deployStage.groovy function
+                deployStage('/home/ubuntu/jenkins/config', DEPLOYMENT_YAML)  // Calls the deployStage.groovy function
             }
         }
     }
