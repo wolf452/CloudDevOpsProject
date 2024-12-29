@@ -1,4 +1,4 @@
-# Ansible Playbook for Setting Up Kubernetes, Docker, Jenkins, SonarQube, and Dependencies
+ # Ansible Playbook for Setting Up Kubernetes, Docker, Jenkins, SonarQube, and Dependencies
 
 This project contains an **Ansible Playbook** to install and configure the following tools on **Ubuntu EC2 Instances**:
 - **Kubernetes** (kubectl, kind)
@@ -165,7 +165,7 @@ To configure your playbook.yml file, you'll need to structure it in such a way t
   - Create a Kind Cluster:
       - Purpose: Creates a Kubernetes cluster using Kind (Kubernetes IN Docker) to provide a lightweight, local Kubernetes environment for deploying applications.
 
- - Copy Kubernetes Config File
+  - Copy Kubernetes Config File
     - Purpose:
        - Copies the Kubernetes configuration file (config) from its default location (~/.kube/config) to the jenkins directory to enable the Jenkins slave to interact with the Kubernetes cluster.
 
