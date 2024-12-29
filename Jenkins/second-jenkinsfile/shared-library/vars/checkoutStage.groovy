@@ -1,6 +1,8 @@
-checkout([$class: 'GitSCM',
-          branches: [[name: '*/main']],
-          doGenerateSubmoduleConfigurations: false,
-          extensions: [],
-          userRemoteConfigs: [[url: 'https://github.com/wolf452/CloudDevOpsProject.git']]
-])
+// vars/checkoutCode.groovy
+def call() {
+    stage('Checkout Code') {
+        git branch: 'main', url: 'https://github.com/wolf452/CloudDevOpsProject.git'
+    }
+}
+
+return this
