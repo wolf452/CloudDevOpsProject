@@ -1,15 +1,19 @@
-# Multi-Cloud DevOps Project
+# DevOps Project
+## Architecture Diagram
 
+![DevOps Project Architecture](https://github.com/saeedkouta/MultiCloudDevOpsProject/assets/167209058/f3fad849-c43d-4630-bb15-50102cc850d0.svg)
+
+---
 ## Overview
 
-This project demonstrates a comprehensive multi-cloud DevOps architecture that integrates cloud services with DevOps tools to manage and deploy infrastructure and applications across multiple cloud platforms.
+This project demonstrates a comprehensive DevOps architecture that integrates cloud services with DevOps tools to manage and deploy infrastructure and applications effectively.
 
 ---
 
 ## Architecture
 
 ### 1. **Infrastructure Setup**  
-   - Use **Terraform** to provision cloud infrastructure across AWS, Azure, and GCP.  
+   - Use **Terraform** to provision cloud infrastructure.  
    - Configure resources using **Ansible**.
 
 ### 2. **CI/CD Pipeline**  
@@ -18,14 +22,14 @@ This project demonstrates a comprehensive multi-cloud DevOps architecture that i
 
 ### 3. **Application Management**  
    - Utilize **Docker** and **Kubernetes** for containerized application management.  
-   - Support deployment on multiple cloud environments.
+   - Support deployment on cloud environments.
 
 ---
 
 ## Key Components
 
 1. **Terraform**  
-   - Automates provisioning of resources such as networks, databases, and virtual machines across multiple clouds.
+   - Automates provisioning of resources such as networks, databases, and virtual machines.
 
 2. **Ansible**  
    - Configures environments and deploys applications.  
@@ -46,10 +50,10 @@ This project demonstrates a comprehensive multi-cloud DevOps architecture that i
 
 1. **Initial Setup:**
    - Install required tools (Terraform, Ansible, Jenkins, etc.).  
-   - Configure cloud credentials (AWS, Azure, GCP).
+   - Configure cloud credentials.
 
 2. **Terraform Execution:**
-   - Provision the necessary cloud resources using the following commands:  
+   - Provision the necessary resources using the following commands:  
      ```bash
      terraform init
      terraform plan
@@ -67,14 +71,10 @@ This project demonstrates a comprehensive multi-cloud DevOps architecture that i
 
 ---
 
-## Architecture Diagram
 
-![Multi-Cloud DevOps](https://github.com/saeedkouta/MultiCloudDevOpsProject/assets/167209058/f3fad849-c43d-4630-bb15-50102cc850d0.svg)
-
----
 
 ## Goals
 
-- **Cloud Integration:** Provide a unified platform that works across multiple cloud environments.  
+- **Cloud Integration:** Provide a unified platform that works across various environments.  
 - **Continuous Improvement:** Enhance deployment efficiency and code quality using CI/CD pipelines.  
 - **Flexibility and Scalability:** Meet the demands of complex applications with cloud and container technologies.
