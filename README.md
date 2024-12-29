@@ -1,7 +1,5 @@
 # DevOps Project
-## Architecture Diagram
 
-![DevOps Project Architecture](https://github.com/saeedkouta/MultiCloudDevOpsProject/assets/167209058/f3fad849-c43d-4630-bb15-50102cc850d0.svg)
 
 ---
 ## Overview
@@ -9,7 +7,9 @@
 This project demonstrates a comprehensive DevOps architecture that integrates cloud services with DevOps tools to manage and deploy infrastructure and applications effectively.
 
 ---
+## Architecture Diagram
 
+![DevOps Project Architecture](https://github.com/saeedkouta/MultiCloudDevOpsProject/assets/167209058/f3fad849-c43d-4630-bb15-50102cc850d0.svg)
 ## Architecture
 
 ### 1. **Infrastructure Setup**  
