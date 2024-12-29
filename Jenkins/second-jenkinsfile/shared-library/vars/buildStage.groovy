@@ -1,5 +1,8 @@
-// buildStage.groovy
 def call() {
-    echo "Building the project with Gradle"
-    sh "./gradlew build"
+    stage('Build') {
+        steps {
+            echo "Building the project with Gradle"
+            sh "./gradlew build"
+        }
+    }
 }
