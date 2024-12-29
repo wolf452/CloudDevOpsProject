@@ -1,7 +1,7 @@
 @Library('shared-library') _
 
 pipeline {
-    agent any
+    agent { label 'jenkins-slave' }
 
     environment {
         DOCKER_IMAGE = 'docker.io/ahmedmaher07/project'
