@@ -71,12 +71,12 @@ This repository contains a shared library for Jenkins to manage infrastructure a
    - Features
    - How to Use
    - Pipeline Stages
-           - Checkout Stage
-           - Terraform Init Stage
-           - Terraform Plan Stage
-           - Terraform Apply Stage
-           - Delay Before Ansible Stage
-           - Run Ansible Stage
-           - Configuration
+         - Checkout Stage
+         - Terraform Init Stage
+         - Terraform Plan Stage
+         - Terraform Apply Stage
+         - Delay Before Ansible Stage
+         - Run Ansible Stage
+         - Configuration
 Examples
 Contributing
