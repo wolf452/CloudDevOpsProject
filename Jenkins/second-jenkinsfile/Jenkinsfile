@@ -6,30 +6,43 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'docker.io/ahmedmaher07/project'
         DEPLOYMENT_YAML = 'deployment.yaml'
+        FINAL_PROJECT_DIR = 'FinalProjectCode-main'  // Define the directory for the project
     }
 
     stages {
         stage('Checkout') {
             steps {
-                checkoutStage()  // Calls the checkoutStage.groovy function
+                echo "Cloning the source code from GitHub"
+                // Cloning the repository into the FinalProjectCode-main directory
+                git url: 'https://github.com/wolf452/CloudDevOpsProject.git', branch: 'main'
+                script {
+                    // Move into the directory after the checkout
+                    
+                }
             }
         }
 
         stage('Unit Test') {
             steps {
-                unitTestStage()  // Calls the unitTestStage.groovy function
+                dir(FINAL_PROJECT_DIR) {  // Change directory to FinalProjectCode-main
+                    unitTestStage()  // Calls the unitTestStage.groovy function
+                }
             }
         }
 
         stage('Build') {
             steps {
-                buildStage()  // Calls the buildStage.groovy function
+                dir(FINAL_PROJECT_DIR) {  // Change directory to FinalProjectCode-main
+                    buildStage()  // Calls the buildStage.groovy function
+                }
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
-                sonarQubeStage()  // Calls the sonarQubeStage.groovy function
+                dir(FINAL_PROJECT_DIR) {  // Change directory to FinalProjectCode-main
+                    sonarQubeStage()  // Calls the sonarQubeStage.groovy function
+                }
             }
         }
 
@@ -41,7 +54,9 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                dockerBuildStage()  // Calls the dockerBuildStage.groovy function
+                dir(FINAL_PROJECT_DIR) {  // Change directory to FinalProjectCode-main
+                    dockerBuildStage()  // Calls the dockerBuildStage.groovy function
+                }
             }
         }
 
