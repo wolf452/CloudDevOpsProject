@@ -1,6 +1,6 @@
 // vars/sonarQubeStage.groovy
 def call() {
-    withSonarQubeEnv('token-sonar') {
+    withSonarQubeEnv('sonar') {
         echo "Running SonarQube analysis"
         sh "./gradlew sonarqube --stacktrace"
     }
