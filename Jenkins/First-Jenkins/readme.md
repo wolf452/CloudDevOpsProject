@@ -22,6 +22,8 @@ Jenkins initializes Terraform using the following command:
 ```groovy
 terraformInit()
 ```
+![init-terr-out](https://github.com/user-attachments/assets/2a500b8d-0f95-4a3b-aad2-feb32d424440)
+
 
 ### 3. **Terraform Plan**
 Jenkins creates a plan using Terraform:
@@ -30,11 +32,14 @@ terraformPlan()
 ```
 This shows a preview of changes that will be applied to the environment, such as creating EC2 instances.
 
+![plan-terr-2](https://github.com/user-attachments/assets/1aa88b5f-7aa0-44af-a338-c725f5a2bcdd)
+
 ### 4. **Terraform Apply**
 Terraform applies the changes defined in the plan to provision EC2 instances on AWS:
 ```groovy
 terraformApply()
 ```
+![apply-terr-3](https://github.com/user-attachments/assets/fb1514a0-7509-438c-8e98-17ee48e5776a)
 
 ### 5. **Inventory File from Terraform**
 After the EC2 instances are created, Terraform generates an inventory file containing IP addresses and connection details, like:
@@ -42,12 +47,19 @@ After the EC2 instances are created, Terraform generates an inventory file conta
 [aws_instances]
 18.204.194.253 ansible_user=ubuntu
 ```
+![inventory](https://github.com/user-attachments/assets/91778313-5745-4fca-ab4a-4a1b538de60b)
 
 ### 6. **Run Ansible**
 Jenkins triggers Ansible to configure the instances with the playbook:
 ```bash
 ansible-playbook playbook.yml -i inventory --private-key /var/lib/jenkins/workspace/Iaac-ansible/ansible/ssh15462748033567534218.key -u ubuntu -e "ansible_ssh_extra_args='-o StrictHostKeyChecking=no'"
+
 ```
+![ansible-1](https://github.com/user-attachments/assets/a9386981-50a8-41f5-8711-5a3e2c3c8c81)
+![ansible-2](https://github.com/user-attachments/assets/40ab0252-df8e-4672-b7c0-edf372f83bd4)
+![ansible-3](https://github.com/user-attachments/assets/e0053c03-3dd3-4cf6-9e6d-f5ae29648428)
+![ansible-4](https://github.com/user-attachments/assets/f3dce60a-7564-4b7f-b4fe-87c5651d6c37)
+![1-out](https://github.com/user-attachments/assets/f47b7a1a-ff7e-4e02-aadc-ed7feb283c43)
 
 ### 7. **Check the Results**
 After Ansible completes execution, Jenkins displays the results in the Jenkins UI, logging any changes or issues encountered.
