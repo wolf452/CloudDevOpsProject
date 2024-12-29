@@ -32,8 +32,8 @@ test {
 sonarqube {
     properties {
         property "sonar.projectKey", "sonar-server"  
-        property "sonar.host.url", "http://54.83.82.67:9000" 
-        property "sonar.login", "squ_fe2f8a6bfdb1e46424a495d34890ea47ac87b94e"
+        property "sonar.host.url", "http://54.91.147.174:9000" 
+        property "sonar.login", "squ_c9d81057c04ee59a05b7f2b95a7e141c4bf4ca17"
          
         
 
