@@ -4,7 +4,7 @@ pipeline {
     agent { label 'jenkins-slave' }
 
     environment {
-        DOCKER_IMAGE = 'docker.io/ahmedmaher07/project'
+        DOCKER_IMAGE = 'docker.io/ahmedmaher08/project'
         DEPLOYMENT_YAML = 'deployment.yaml'
         FINAL_PROJECT_DIR = 'FinalProjectCode-main'  // Define the directory for the project
     }
