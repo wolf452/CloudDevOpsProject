@@ -1,7 +1,12 @@
-// sonarQubeStage.groovy
+
+
 def call() {
-    withSonarQubeEnv('sonar') { 
-        echo "Running SonarQube analysis"
-        sh "./gradlew sonarqube"
+    stage('SonarQube Analysis') {
+        steps {
+            withSonarQubeEnv('sonar') { 
+                echo "Running SonarQube analysis"
+                sh "./gradlew sonarqube"
+            }
+        }
     }
 }
