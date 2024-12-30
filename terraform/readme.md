@@ -192,7 +192,7 @@ This project provisions a Virtual Private Cloud (VPC), subnets, an internet gate
 ![sns-b](https://github.com/user-attachments/assets/ca35c78e-6818-4465-b907-28e4b790bf76)
 ![sns-c](https://github.com/user-attachments/assets/701c272a-6a6f-4fa4-aec6-62f189276afc)
 
-![ldf](https://github.com/user-attachments/assets/31aa9d31-fbeb-4cde-a3fe-ed6630f41129)
+
 
 <img width="812" alt="sns" src="https://github.com/user-attachments/assets/ee837ccf-86e2-4918-bfe2-0915f217838e" />
 
@@ -243,6 +243,7 @@ This module creates a CloudWatch Log Group and sets up a Log Stream to monitor l
 ### 8. sns Module
 This module creates an SNS Topic and sets up a subscription using the protocol defined in the sns_subscription_protocol variable (such as email, Lambda, or SQS).
 
+![ldf](https://github.com/user-attachments/assets/359920d3-7bf4-498a-9a3f-48e2c6205280)
 
 
 # output.tf
