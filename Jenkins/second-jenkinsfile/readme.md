@@ -109,7 +109,7 @@ The implementation utilizes:
 ![create-token](https://github.com/user-attachments/assets/eaca1ff0-a3bc-493b-a14c-8cf7ce0c9bd6)
 ![home-token](https://github.com/user-attachments/assets/e8b6768f-a4fa-496f-bd5d-14d9ba47bd99)
 
-![image](https://github.com/user-attachments/assets/1ba38b7d-3b84-48af-8024-fd253b746a28)
+
 
 
 ### Step 5: Test and Execute the Pipeline
@@ -133,6 +133,9 @@ The implementation utilizes:
 ![login-dockerhup](https://github.com/user-attachments/assets/2abcc8f0-b90c-420d-b625-826bf1ef985a)
 ![finish](https://github.com/user-attachments/assets/b3e86e0b-87e3-49f0-915e-0fccfa714658)
 ![build-image](https://github.com/user-attachments/assets/64cc2fc4-d275-4d87-aad4-7413e97045ab)
+![Capture](https://github.com/user-attachments/assets/4593743c-e27b-4649-9c0a-21802c13a7aa)
+![Capture PNG2](https://github.com/user-attachments/assets/26337d74-b018-4a8c-8b1a-c11e205eaffd)
+![Capture PNG3](https://github.com/user-attachments/assets/a133e859-c14f-45a7-b19f-1ac4c92f20e1)
 
 # Application is deployed to k8s
 ### Exposing the Application with Ngrok
