@@ -141,10 +141,11 @@ Since the application is deployed on Kubernetes without public IPs, `ngrok` is u
 1. **Port Forwarding**: Forward the desired port from the Kubernetes pod to your local machine using the following command:
    ```bash
    kubectl port-forward <pod-name> <local-port>:<pod-port>
- ```
+  ```
 Replace <pod-name>, <local-port>, and <pod-port> with the appropriate values.
 
-2.  ** Run Ngrok** : Start an ngrok session to expose the forwarded port:
+### Run Ngrok
+  Start an ngrok session to expose the forwarded port:
  ```bash
 ngrok http <local-port>
  ```
