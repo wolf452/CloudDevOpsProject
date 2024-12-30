@@ -243,7 +243,8 @@ This module creates a CloudWatch Log Group and sets up a Log Stream to monitor l
 This module creates an SNS Topic and sets up a subscription using the protocol defined in the sns_subscription_protocol variable (such as email, Lambda, or SQS).
 
 ![cloudwatch-main](https://github.com/user-attachments/assets/dcfdfd2f-406c-404c-8271-1e2c54e2fcce)
- 
+![ldf](https://github.com/user-attachments/assets/0cf9f325-5c25-4ade-b293-cc74720ca92c)
+
 # output.tf
 ├── [**output.tf**](https://github.com/wolf452/CloudDevOpsProject/blob/main/terraform/output.tf): 
 
