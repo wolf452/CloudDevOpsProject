@@ -213,6 +213,9 @@ The playbook will perform the following tasks:
 - Install SonarQube and configure it to use PostgreSQL as the database
 - Install Kubernetes CLI tools like kubectl and kind
 - Set up dependencies and required files for each service
+![jenkins-slave](https://github.com/user-attachments/assets/5db2dd21-ccab-43b8-9099-6732357cdca8)
+![sonar-service](https://github.com/user-attachments/assets/f484926a-ba43-4cb8-b4b1-aceed4e0103a)
+![docker-service](https://github.com/user-attachments/assets/783b1dae-4d10-4b5e-849c-21def6804b5d)
 
 ### 5. Verify the Installation
 After running the playbook, verify that the services are running correctly:
