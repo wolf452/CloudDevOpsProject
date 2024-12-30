@@ -1,80 +1,98 @@
-# DevOps Project
+# CloudDevOpsProject
 
-
----
 ## Overview
-
-This project demonstrates a comprehensive DevOps architecture that integrates cloud services with DevOps tools to manage and deploy infrastructure and applications effectively.
-
----
-## Architecture Diagram
-
-![DevOps Project Architecture](https://github.com/saeedkouta/MultiCloudDevOpsProject/assets/167209058/f3fad849-c43d-4630-bb15-50102cc850d0.svg)
-## Architecture
-
-### 1. **Infrastructure Setup**  
-   - Use **Terraform** to provision cloud infrastructure.  
-   - Configure resources using **Ansible**.
-
-### 2. **CI/CD Pipeline**  
-   - Leverage **Jenkins** for a seamless pipeline to manage infrastructure and application deployment.  
-   - Perform code quality checks and security analysis using **SonarQube** backed by **PostgreSQL**.
-
-### 3. **Application Management**  
-   - Utilize **Docker** and **Kubernetes** for containerized application management.  
-   - Support deployment on cloud environments.
+The **CloudDevOpsProject** is a comprehensive DevOps project that demonstrates skills in containerization, infrastructure provisioning, configuration management, and CI/CD pipelines. This project covers end-to-end tasks, from setting up a GitHub repository to deploying applications on OpenShift.
 
 ---
 
-## Key Components
+<img src="https://github.com/saeedkouta/MultiCloudDevOpsProject/assets/167209058/f3fad849-c43d-4630-bb15-50102cc850d0.svg" >
 
-1. **Terraform**  
-   - Automates provisioning of resources such as networks, databases, and virtual machines.
 
-2. **Ansible**  
-   - Configures environments and deploys applications.  
-   - Includes roles to install tools like Docker, Jenkins, Java, and more.
+## Containerization with Docker
 
-3. **Jenkins**  
-   - Manages pipelines for continuous integration and continuous delivery (CI/CD).
+### Task
+- Develop a `Dockerfile` for building the application image.
+- Source code: [FinalProjectCode](https://github.com/IbrahimAdell/FinalProjectCode).
 
-4. **SonarQube**  
-   - Ensures code quality and performs static analysis for security.
-
-5. **Docker and Kubernetes**  
-   - Manages containerized applications and deploys them across cloud platforms.
 
 ---
 
-## Workflow
+## Infrastructure Provisioning with Terraform
 
-1. **Initial Setup:**
-   - Install required tools (Terraform, Ansible, Jenkins, etc.).  
-   - Configure cloud credentials.
+### Task
+- Deliver Terraform scripts to provision AWS resources:
+  - VPC, Subnet, Security Groups.
+  - EC2 instance for application deployment.
+- Use Terraform Modules.
 
-2. **Terraform Execution:**
-   - Provision the necessary resources using the following commands:  
-     ```bash
-     terraform init
-     terraform plan
-     terraform apply
-     ```
-
-3. **Ansible Execution:**
-   - Configure servers and deploy applications using Ansible playbooks:  
-     ```bash
-     ansible-playbook -i inventory playbook.yml
-     ```
-
-4. **Jenkins Pipeline:**
-   - Manage and automate all processes in a CI/CD environment.
 
 ---
 
+## AWS Integration
+
+### Task
+- Provide instructions to integrate AWS services:
+  - Use S3 Terraform Backend for state management.
+  - Integrate CloudWatch for monitoring.
 
 
-## Goals
 
-- **Cloud Integration:** Provide a unified platform that works across various environments.  
-- **Continuous Improvement:** Enhance deployment efficiency and code quality using CI/CD pipelines.  
-- **Flexibility and Scalability:** Meet the demands of complex applications with cloud and container technologies.
+## Configuration Management with Ansible
+
+### Task
+- Develop Ansible playbooks for EC2 instance configuration:
+  - Install required packages (Git, Docker, Java).
+  - Install packages for Jenkins and SonarQube.
+  - Set up necessary environment variables.
+- Use Ansible roles.
+
+
+---
+
+## Continuous Integration with Jenkins
+
+### Task
+- Configure Jenkins pipeline in `Jenkinsfile` with the following stages:
+  1. Git Checkout.
+  2. Unit Test.
+  3. Build JAR.
+  4. SonarQube Test.
+  5. Build Docker Image.
+  6. Push Docker Image to Registry.
+  7. Deploy on OpenShift.
+- Utilize Shared Jenkins Library and Jenkins slave.
+
+
+---
+
+## Instructions for Execution
+
+1. Clone the repository:
+   ```bash
+   git clone (https://github.com/wolf452/CloudDevOpsProject.git)
+   ```
+
+2. Build and run the Docker container:
+   ```bash
+   docker build -t application-image .
+   docker run -d -p 8080:8080 application-image
+   ```
+
+3. Provision infrastructure with Terraform:
+   ```bash
+   terraform init
+   terraform plan
+   terraform apply
+   ```
+
+4. Configure EC2 instances with Ansible:
+   ```bash
+   ansible-playbook -i inventory playbook.yml
+   ```
+
+5. Run the Jenkins pipeline for continuous integration and deployment.
+
+---
+
+# Done !!
+
